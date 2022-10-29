@@ -1,0 +1,13 @@
+nav{
+    height: 50px;
+    border: 1px solid #b0b5ab;
+}
+
+.div-header{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

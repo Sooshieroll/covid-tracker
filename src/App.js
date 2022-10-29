@@ -7,6 +7,8 @@ import BarChart from './components/BarChart';
 import DoughnutChart from './components/DoughnutChart';
 import LineChart from './components/LineChart';
 import PieChart from './components/PieChart';
+import Home from './components/Home';
+import Header from './components/header/Header';
 // import { UserData } from './Data'
 
 
@@ -14,10 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <BarChart />
-      <DoughnutChart />
-      <LineChart />
-      <PieChart />
+      <Home />
     </div>
   );
 }
