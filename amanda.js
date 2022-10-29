@@ -1,1 +1,0 @@
-const code = 'hi lucy';
