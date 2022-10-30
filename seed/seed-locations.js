@@ -22,7 +22,7 @@ const location = {
     url: 'https://spott.p.rapidapi.com/places',
     // params: { type: 'CITY', skip: '0', country: 'US,CA', limit: '1', q: 'New York' },
     headers: {
-        'X-RapidAPI-Key': '096786359dmshf50b115415a56c4p1941d9jsn1ac864538b7d',
+        'X-RapidAPI-Key': process.env.LOCATION_API_KEY,
         'X-RapidAPI-Host': 'spott.p.rapidapi.com'
     }
 };
