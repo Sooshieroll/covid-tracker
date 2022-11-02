@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const axios = require('axios');
 
 
-
 router.get('/:state', (req, res) => {
     return axios.get(`https://api.covidactnow.org/v2/state/${req.query.state}.json?apiKey=${process.env.COVID_API_KEY}`)
         .then(response => {
