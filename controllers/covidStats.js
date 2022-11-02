@@ -6,26 +6,19 @@ const mongoose = require('mongoose');
 const axios = require('axios');
 
 
-router.get('/', (req, res) => {
-    const covidResults = axios.get(`https://api.covidactnow.org/v2/states.json?apiKey=${process.env.COVID_API_KEY}`, [{
-        params: {
-            actuals: {
-                cases: req.params.cases,
-                deaths: req.query.deaths,
-                positiveTests: req.query.positiveTests,
-                negativeTests: req.query.negativeTests
-            },
-            location: {
-                country: req.params.country,
-                state: req.params.state,
-                county: req.params.county
-            }
-        }
-    }])
+router.get('/:state', (req, res) => {
+    return axios.get(`https://api.covidactnow.org/v2/state/${req.query.state}.json?apiKey=${process.env.COVID_API_KEY}`)
         .then(response => {
-            console.log('All Covid Stats', response);
-
-        });
+            console.log('All Covid Stats');
+            // console.log(response.data.find(state => state.state === 'CA').actuals);
+            // console.log(Object.keys(response));
+            console.log(response.data);
+            // return res.json({ stateStat: })
+        })
+        .catch(error => {
+            console.log('error', error);
+            res.json({ message: 'Error occured, please try again' })
+        })
 })
 
 router.get('/:country', (req, res) => {
