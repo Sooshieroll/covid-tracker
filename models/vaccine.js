@@ -9,4 +9,6 @@ const vaccineSchema = new Schema({
 
 const Vaccine = mongoose.model('Vaccine', vaccineSchema);
 
-module.exports = Example;
+
+module.exports = Vaccine;
+
