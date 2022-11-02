@@ -25,7 +25,7 @@ router.get('/US', (req, res) => {
         })
 })
 
-router.get('/:state', (req, res) => {
+router.get('/state/:state', (req, res) => {
     return axios.get(`https://api.covidactnow.org/v2/state/CA.json?apiKey=${process.env.COVID_API_KEY}`)
         .then(response => {
             console.log(`Covid Stats for `);
@@ -40,7 +40,7 @@ router.get('/:state', (req, res) => {
         })
 })
 
-router.get('/:county', (req, res) => {
+router.get('/county/:county', (req, res) => {
     return axios.get(`https://api.covidactnow.org/v2/county/01099.json?apiKey=${process.env.COVID_API_KEY}`)
         .then(response => {
             console.log(`Covid Stats for `);
