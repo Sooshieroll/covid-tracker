@@ -47,16 +47,31 @@ router.post('/', (req, res) => {
 });
 
 // Update One Travel
-// router.put('/:id', (req, res) => {
-//     console.log('route is being on PUT')
-//     Travel.findById(req.params.id)
-//     .then(foundTravel => {
-//         console.log('Travel found', foundTravel);
-//         Travel.findByIdAndUpdate(req.params.id, {
-//             header: req.body
-//         })
-//     })
-// })
+router.put('/:id', (req, res) => {
+    console.log('route is being on PUT')
+    Travel.findById(req.params.id)
+    .then(foundTravel => {
+        console.log('Travel found', foundTravel);
+        Travel.findByIdAndUpdate(req.params.id, {
+            location: req.body.location ? req.body.location : foundTravel.location,
+            restriction: req.body.restriction ? req.body.restriction : foundTravel.restriction,
+        }, {
+            upsert: true
+        })
+        .then(travel => {
+            console.log('Travel was updated', travel);
+            res.redirect(`/travels/${req.params.id}`);
+        })
+        .catch(error => {
+            console.log('error', error)
+            res.json({ message: "Error occured, please try again" })
+        })
+    })
+    .catch(error => {
+        console.log('error', error)
+        res.json({ message: "Error occured, please try again" })
+    })
+});
 
 // Delete One Travel
 router.delete('/:id', (req, res) => {
