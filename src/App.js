@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import { Route, Switch, Redirect, BrowserRouter as Router } from 'react-router-dom';
-// import jwt_decode from 'jwt-decode';
-// import setAuthToken from './utils/setAuthToken';
+
+import { Route, Switch, Redirect, BrowserRouter as Router } from 'react-router-dom';
+
 import './App.css';
 import Navbar from './components/navbar/Navbar';
 import { Routes, Route, BrowserRouter as Router} from 'react-router-dom';
