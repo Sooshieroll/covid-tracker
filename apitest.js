@@ -1,6 +1,6 @@
-// const axios = require('axios');
-// const express = require('express');
-// require('dotenv').config();
+const axios = require('axios');
+const express = require('express');
+require('dotenv').config();
 // const app = express();
 // const mongoose = require('mongoose');
 // const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
@@ -58,5 +58,32 @@
 //     });
 // });
 
+const options = {
+    method: 'GET',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/country-report-iso-based/UnitedStates/us',
+    headers: {
+        'X-RapidAPI-Key': (`${process.env.RAPID_API_KEY_COUNTRIES}`),
+        'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+}
 
+axios.request(options).then(function (response) {
+    console.log(response.data);
+}).catch(function (error) {
+    console.error(error);
+});
 
+const isoCodes = {
+    method: 'GET',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries-name-ordered',
+    headers: {
+        'X-RapidAPI-Key': (`${process.env.RAPID_API_KEY_COUNTRIES}`),
+        'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+}
+
+axios.request(isoCodes).then(function (response) {
+    console.log(response.data);
+}).catch(function (error) {
+    console.error(error);
+});
