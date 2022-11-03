@@ -16,10 +16,7 @@ db.on('error', (error) => {
     console.log(`Database Error: ${error}`);
 })
 
-
-
 async function addIsoCodes() {
-    const array = [];
     const isoCodes = {
         method: 'GET',
         url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries-name-ordered',
@@ -31,7 +28,18 @@ async function addIsoCodes() {
 
     axios.request(isoCodes).then(function (response) {
         console.log(response.data);
+        let arr = response.data.map(c => {
+            return { country: c.Country, isoCode: c.ThreeLetterSymbol }
+        })
+        IsoCode.insertMany(arr)
+            .then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.log('Error', err);
+            })
     }).catch(function (error) {
         console.error(error);
     });
 }
+
+// addIsoCodes();

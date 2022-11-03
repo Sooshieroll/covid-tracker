@@ -41,7 +41,7 @@ router.get('/state/:state', (req, res) => {
 })
 
 router.get('/county/:county', (req, res) => {
-    return axios.get(`https://api.covidactnow.org/v2/county/01099.json?apiKey=${process.env.COVID_API_KEY}`)
+    return axios.get(`https://api.covidactnow.org/v2/county/---.json?apiKey=${process.env.COVID_API_KEY}`)
         .then(response => {
             console.log(`Covid Stats for `);
             // console.log(response.data.find(state => state.state === 'CA').actuals);
@@ -55,6 +55,8 @@ router.get('/county/:county', (req, res) => {
         })
 
 })
+
+
 
 
 
