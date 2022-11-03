@@ -6,8 +6,10 @@ const travelSchema = new Schema({
 
     restriction: Boolean,
 
+
 });
 
 const Travel = mongoose.model('Travel', travelSchema);
 
 module.exports = Travel;
+
