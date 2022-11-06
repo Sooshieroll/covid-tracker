@@ -42,4 +42,6 @@ async function addIsoCodes() {
     });
 }
 
-addIsoCodes();
+
+// addIsoCodes();
+
