@@ -3,7 +3,6 @@ const { Schema } = mongoose;
 
 const travelSchema = new Schema({
     location: String,
-
     restriction: Boolean,
 
 
