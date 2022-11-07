@@ -1,20 +1,42 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const Vaccine = require('../models/vaccine');
 const mongoose = require('mongoose');
+const axios = require('axios');
 
-// Find All Travels
-router.get('/', (req, res) => {
-    Vaccine.find({})
-    .then(vaccines => {
-        console.log('All Vaccines', vaccines);
-        res.json({ vaccines: vaccines });
+// Find All Vaccines
+router.get('/results', (req, res) => {
+    const options = {
+        method: 'GET',
+        url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines',
+        headers: {
+          'X-RapidAPI-Key': process.env.VACCINE_API_KEY,
+          'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+        }
+      };
+    axios.request(options)
+    .then(response => {
+        console.log('FDA Approved Vaccines');
+        // return res.json({ vaccine: response.data })
+        console.log(response);
+        return res.json({ vaccines: response.data });
     })
     .catch(error => {
         console.log('error', error);
-        res.json({ message: "Error occurred, please try again" })
-    });
+        res.json({ message: 'Error occurred, please try again'})
+    })
+//     Vaccine.find({})
+//     .then(vaccines => {
+//         console.log('All Vaccines', vaccines);
+//         res.json({ vaccines: vaccines });
+//     })
+//     .catch(error => {
+//         console.log('error', error);
+//         res.json({ message: "Error occurred, please try again" })
+//     });
 });
+
 
 // Find One Vaccine (by Id)
 router.get('/:id', (req, res) => {
