@@ -9,7 +9,9 @@ const Travel = require('./models/travel');
 const User = require('./models/user');
 const VaccinatedState = require('./models/vaccinatedStat');
 const Vaccine = require('./models/vaccine');
-const IsoCode = require('./models/isoCode')
+const IsoCode = require('./models/isoCode');
+const fipsCode = require('./models/fipsCode');
+
 
 const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
 mongoose.connect(MONGO_CONNECTION_STRING, { useNewUrlParser: true });
