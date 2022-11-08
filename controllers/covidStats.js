@@ -24,8 +24,8 @@ router.get('/US', (req, res) => {
 
 
 router.get('/state/:state', (req, res) => {
-    // return axios.get(`https://api.covidactnow.org/v2/state/${req.query.state}.json?apiKey=${process.env.COVID_API_KEY}`)
-    return axios.get(`https://api.covidactnow.org/v2/state/CA.json?apiKey=${process.env.COVID_API_KEY}`)
+    return axios.get(`https://api.covidactnow.org/v2/state/${req.query.state}.json?apiKey=${process.env.COVID_API_KEY}`)
+        // return axios.get(`https://api.covidactnow.org/v2/state/CA.json?apiKey=${process.env.COVID_API_KEY}`)
         .then(response => {
             console.log(`Covid Stats for state`);
             console.log(response.data);
@@ -36,8 +36,6 @@ router.get('/state/:state', (req, res) => {
             res.json({ message: 'Error occured, please try again' })
         })
 })
-
-
 
 
 router.get('/county/:fips', (req, res) => {
@@ -57,15 +55,16 @@ router.get('/county/:fips', (req, res) => {
 })
 
 router.get('/country/:country/:isocode', (req, res) => {
+
+
     const countryIso = {
         method: 'GET',
-        url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/country-report-iso-based/Canada/can`,
+        url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/country-report-iso-based/${req.query.country}/query results`,
         headers: {
             'X-RapidAPI-Key': process.env.RAPID_API_KEY_COUNTRIES,
             'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
         }
     };
-
 
     axios.request(countryIso).then(function (response) {
         console.log(response.data);
@@ -75,6 +74,9 @@ router.get('/country/:country/:isocode', (req, res) => {
     });
 
 })
+
+
+
 
 
 module.exports = router;
