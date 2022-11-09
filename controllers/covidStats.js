@@ -70,6 +70,7 @@ router.get('/country/:country', async (req, res) => {
         }
     };
 
+
     axios.request(countryIso).then(function (response) {
         // console.log(response.data);
         // return res.send(JSON.stringify({ response.data }))
