@@ -38,8 +38,6 @@ router.get('/state/:state', (req, res) => {
 })
 
 
-
-
 router.get('/county/:fips', (req, res) => {
     // return axios.get(`https://api.covidactnow.org/v2/county/${req.query.fips}.json?apiKey=${process.env.COVID_API_KEY}`)
     return axios.get(`https://api.covidactnow.org/v2/county/01019.json?apiKey=${process.env.COVID_API_KEY}`)
@@ -75,6 +73,8 @@ router.get('/country/:country/:isocode', (req, res) => {
     });
 
 })
+
+
 
 
 module.exports = router;
