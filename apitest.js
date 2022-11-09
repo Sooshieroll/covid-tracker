@@ -126,11 +126,13 @@ require('dotenv').config();
 //     console.error(error);
 // }); 
 
+
+
 const options = {
     method: 'GET',
     url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines',
     headers: {
-        'X-RapidAPI-Key': '',
+        'X-RapidAPI-Key': `${process.env.RAPID_API_KEY_COUNTRIES}`,
         'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
     }
 };
@@ -140,3 +142,4 @@ axios.request(options).then(function (response) {
 }).catch(function (error) {
     console.error(error);
 });
+
