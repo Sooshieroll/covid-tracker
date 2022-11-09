@@ -5,6 +5,7 @@ const CovidStat = require('../models/covidStat');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const IsoCode = require('../models/isoCode');
+const FipsCode = require('../models/fipsCode');
 
 
 router.get('/US', (req, res) => {
@@ -39,12 +40,16 @@ router.get('/state/:state', (req, res) => {
 })
 
 
-router.get('/county/:fips', (req, res) => {
-    return axios.get(`https://api.covidactnow.org/v2/county/${req.params.fips}.json?apiKey=${process.env.COVID_API_KEY}`)
+router.get('/county/:county', async (req, res) => {
+    const fipsCodeModel = await FipsCode.findOne({ name: req.params.county + ' County' })
+    const fipsCode = fipsCodeModel.fips
+    // console.log(fipsCode);
+    // console.log(req.params.county);
+    return axios.get(`https://api.covidactnow.org/v2/county/${fipsCode}.json?apiKey=${process.env.COVID_API_KEY}`)
         // return axios.get(`https://api.covidactnow.org/v2/county/01019.json?apiKey=${process.env.COVID_API_KEY}`)
         .then(response => {
-            console.log(`Covid Stats for county `);
-            console.log(response.data);
+            console.log(`Covid Stats for`, req.params.county + ' County');
+            // console.log(response.data);
             return res.json({ countyStat: response.data })
         })
         .catch(error => {
@@ -73,6 +78,7 @@ router.get('/country/:country', async (req, res) => {
         // console.log(response.data);
         // return res.send(JSON.stringify({ response.data }))
         console.log(response.data)
+        return res.json(response.data)
     }).catch(function (error) {
         console.error('Error', error);
     });
