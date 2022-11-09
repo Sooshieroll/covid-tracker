@@ -17,10 +17,11 @@ router.get('/:isocode', (req, res) => {
 
     axios.request(vaccinationIso).then(function (response) {
         console.log(response.data);
+        if (response.data.length === 0) {
+           return res.json({ message: 'Try another search' })
+        } 
         return res.json({ vaccinationStat: response.data })
-        if (response.data === []) {
-            res.json({ message: 'Try another search' })
-        }
+        
     }).catch(function (error) {
         console.error(error);
     });
