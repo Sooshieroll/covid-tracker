@@ -58,31 +58,84 @@ require('dotenv').config();
 //     });
 // });
 
+// const options = {
+//     method: 'GET',
+//     url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/country-report-iso-based/UnitedStates/us',
+//     headers: {
+//         'X-RapidAPI-Key': (`${process.env.RAPID_API_KEY_COUNTRIES}`),
+//         'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+//     }
+// }
+
+// axios.request(options).then(function (response) {
+//     console.log(response.data);
+// }).catch(function (error) {
+//     console.error(error);
+// });
+
+// const isoCodes = {
+//     method: 'GET',
+//     url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries-name-ordered',
+//     headers: {
+//         'X-RapidAPI-Key': (`${process.env.RAPID_API_KEY_COUNTRIES}`),
+//         'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+//     }
+// }
+
+// axios.request(isoCodes).then(function (response) {
+//     console.log(response.data);
+// }).catch(function (error) {
+//     console.error(error);
+// });
+
+// async function addFipsCodes() {
+// const fipsCodes = {
+//     method: 'GET',
+//     url: 'https://fips-code-api.herokuapp.com/api/index',
+// }
+
+// axios.request(fipsCodes).then(function (response) {
+
+//     console.log(Object.keys(response));
+//     console.log(response.data)
+//     FipsCodes.insertMany()
+//         .then(res => {
+//             console.log(res);
+//         }).catch(err => {
+//             console.log('Error', err);
+//         })
+// }).catch(function (error) {
+//     console.error(error);
+// });
+
+
+// addFipsCodes();
+
+// const countriesIso = {
+//     method: 'GET',
+//     url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/country-report-iso-based/Brazil/bra',
+//     headers: {
+//         'X-RapidAPI-Key': process.env.RAPID_API_KEY_COUNTRIES,
+//         'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+//     }
+// };
+
+// axios.request(countriesIso).then(function (response) {
+//     console.log(response.data);
+// }).catch(function (error) {
+//     console.error(error);
+// }); 
+
 const options = {
     method: 'GET',
-    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/country-report-iso-based/UnitedStates/us',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines',
     headers: {
-        'X-RapidAPI-Key': (`${process.env.RAPID_API_KEY_COUNTRIES}`),
+        'X-RapidAPI-Key': '',
         'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
     }
-}
+};
 
 axios.request(options).then(function (response) {
-    console.log(response.data);
-}).catch(function (error) {
-    console.error(error);
-});
-
-const isoCodes = {
-    method: 'GET',
-    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries-name-ordered',
-    headers: {
-        'X-RapidAPI-Key': (`${process.env.RAPID_API_KEY_COUNTRIES}`),
-        'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
-    }
-}
-
-axios.request(isoCodes).then(function (response) {
     console.log(response.data);
 }).catch(function (error) {
     console.error(error);
