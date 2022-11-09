@@ -126,17 +126,17 @@ require('dotenv').config();
 //     console.error(error);
 // }); 
 
-const options = {
-    method: 'GET',
-    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines',
-    headers: {
-        'X-RapidAPI-Key': '',
-        'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
-    }
-};
+// const options = {
+//     method: 'GET',
+//     url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines',
+//     headers: {
+//         'X-RapidAPI-Key': '',
+//         'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+//     }
+// };
 
-axios.request(options).then(function (response) {
-    console.log(response.data);
-}).catch(function (error) {
-    console.error(error);
-});
+// axios.request(options).then(function (response) {
+//     console.log(response.data);
+// }).catch(function (error) {
+//     console.error(error);
+// });
