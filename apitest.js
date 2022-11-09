@@ -130,7 +130,7 @@ const options = {
     method: 'GET',
     url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-fda-approved-vaccines',
     headers: {
-        'X-RapidAPI-Key': '096786359dmshf50b115415a56c4p1941d9jsn1ac864538b7d',
+        'X-RapidAPI-Key': `${process.env.RAPID_API_KEY_COUNTRIES}`,
         'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
     }
 };

@@ -43,5 +43,3 @@ async function addIsoCodes() {
 }
 
 
-// addIsoCodes();
-

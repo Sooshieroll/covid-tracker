@@ -10,12 +10,15 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    meta: {
-        age: Number,
-        website: String
+    password: {
+        type: String,
+        required: true,
+        minLength: 8
+    },
+    date: {
+        type: Date,
+        default: Date.now()
     }
-}, {
-    timestamps: true
 });
 
 userSchema.methods.sayHello = function () {
