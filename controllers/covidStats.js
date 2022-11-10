@@ -8,6 +8,7 @@ const IsoCode = require('../models/isoCode');
 const FipsCode = require('../models/fipsCode');
 
 
+
 router.get('/US', (req, res) => {
     return axios.get(`https://api.covidactnow.org/v2/country/US.json?apiKey=${process.env.COVID_API_KEY}`)
 
@@ -40,12 +41,14 @@ router.get('/state/:state', (req, res) => {
 })
 
 
+
 router.get('/county/:county', async (req, res) => {
     const fipsCodeModel = await FipsCode.findOne({ name: req.params.county + ' County' })
     const fipsCode = fipsCodeModel.fips
     // console.log(fipsCode);
     // console.log(req.params.county);
     return axios.get(`https://api.covidactnow.org/v2/county/${fipsCode}.json?apiKey=${process.env.COVID_API_KEY}`)
+
         // return axios.get(`https://api.covidactnow.org/v2/county/01019.json?apiKey=${process.env.COVID_API_KEY}`)
         .then(response => {
             console.log(`Covid Stats for`, req.params.county + ' County');
@@ -79,6 +82,7 @@ router.get('/country/:country', async (req, res) => {
         // return res.send(JSON.stringify({ response.data }))
         console.log(response.data)
         return res.json(response.data)
+
     }).catch(function (error) {
         console.error('Error', error);
     });
