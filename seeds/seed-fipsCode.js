@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const IsoCode = require('../models/isoCode');
+const FipsCode = require('../models/fipsCode');
 const axios = require('axios');
 
 const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
@@ -16,22 +16,18 @@ db.on('error', (error) => {
     console.log(`Database Error: ${error}`);
 })
 
-async function addIsoCodes() {
-    const isoCodes = {
+async function addFipsCodes() {
+    const fipsCodes = {
         method: 'GET',
-        url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries-name-ordered',
-        headers: {
-            'X-RapidAPI-Key': (`${process.env.RAPID_API_KEY_COUNTRIES}`),
-            'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
-        }
+        url: 'https://fips-code-api.herokuapp.com/api/index',
     }
 
-    axios.request(isoCodes).then(function (response) {
+    axios.request(fipsCodes).then(function (response) {
         console.log(response.data);
-        let arr = response.data.map(c => {
-            return { country: c.Country, isoCode: c.ThreeLetterSymbol }
+        let arr = response.data.map(i => {
+            return { name: i.name, fips: i.fips, stateFips: i.stateFips, state: i.state, abbrev: i.abbrev }
         })
-        IsoCode.insertMany(arr)
+        FipsCode.insertMany(arr)
             .then(res => {
                 console.log(res);
             }).catch(err => {
@@ -42,5 +38,4 @@ async function addIsoCodes() {
     });
 }
 
-// addIsoCodes();
-
+// addFipsCodes();
