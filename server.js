@@ -11,6 +11,7 @@ const VaccinatedState = require('./models/vaccinatedStat');
 const Vaccine = require('./models/vaccine');
 const IsoCode = require('./models/isoCode');
 const fipsCode = require('./models/fipsCode');
+const cors = require('cors');
 
 
 const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
@@ -28,6 +29,7 @@ db.on('error', (error) => {
 })
 
 app.use(express.json());
+app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 

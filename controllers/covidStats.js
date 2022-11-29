@@ -63,6 +63,7 @@ router.get('/county/:county', async (req, res) => {
 })
 
 router.get('/country/:country', async (req, res) => {
+    console.log(req.params.country)
     const isoCodeModel = await IsoCode.find({ country: req.params.country })
     const isoCode = isoCodeModel[0].isoCode
     const countryIso = {
